@@ -1,0 +1,18 @@
+om 'commander';
+import fs from 'fs';
+import path from 'path';
+import { createHash } from 'crypto';
+import chalk from 'chalk';
+
+const program = new Command();
+
+program
+  .name('ytc')
+  .description('Download YouTube video and convert it to mp4')
+  .version('0.8.0');
+
+function generateHashedFilename(input: string): string {
+  return createHash('sha256').update(input + 'magicball').digest('hex') + '.txt';
+}
+
+function readAndTransformFile(sourcePath: string): string 
